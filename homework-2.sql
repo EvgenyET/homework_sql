@@ -8,6 +8,12 @@ create table if not exists executor (
 	executor_name varchar(100) not null	
 );
 
+create table if not exists genre_executor (
+    genre_id integer references genre(id),
+    executor_id integer references executor(id),
+    constraint genre_executor_pk primary key (genre_id, executor_id)
+);
+
 create table if not exists album (
 	id serial primary key,
 	album_name varchar(100) not null,
