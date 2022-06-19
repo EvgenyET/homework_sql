@@ -1,46 +1,47 @@
-create table if not exists genre (
+create table if not exists musicians (
 	id serial primary key,
-	genre_name varchar(100) not null unique
+	musician text,
+	nickname text 
+);
+create table if not exists albums (
+	id serial  primary key,
+	name_album text,
+	year_of_release_album integer
 );
 
-create table if not exists executor (
+create table if not exists tracks (
 	id serial primary key,
-	executor_name varchar(100) not null	
+	name_track text,
+	duration numeric,
+	album_id  integer references albums(id)
 );
 
-create table if not exists genre_executor (
-    genre_id integer references genre(id),
-    executor_id integer references executor(id),
-    constraint genre_executor_pk primary key (genre_id, executor_id)
-);
-
-create table if not exists album (
+create table if not exists genres (
 	id serial primary key,
-	album_name varchar(100) not null,
-	year_of_release integer not null
+	name_genre text
 );
 
-create table if not exists executor_album (
-    executor_id integer references executor(id),
-    album_id integer references album(id),
-    constraint executor_album_pk primary key (executor_id, album_id)
-);
-
-create table if not exists track (
+create table if not exists digests (
 	id serial primary key,
-	track_name varchar(100) not null unique,
-	duration integer not null,
-	album_id integer references album(id)
+	name_digest text,
+	year_of_release_digest integer
 );
 
-create table if not exists collection_of_songs (
-    id serial primary key,
-    collection_name varchar(100) not null unique,
-    year_of_release integer not null
+create table if not exists genre_musician (
+	id serial primary key,
+	genres_id  integer references genres(id),
+	musician_id  integer references musicians(id)
 );
 
-create table if not exists track_collection (
-    track_id integer references track(id),
-    collection_of_songs_id integer references collection_of_songs(id),
-    constraint track_collection_pk primary key (track_id, collection_of_songs_id)
+create table if not exists musicians_albums (
+	id serial primary key,
+	musician_id  integer references musicians(id),
+	album_id  integer references albums(id)
+	
+);
+
+create table if not exists composition_digest (
+	id serial primary key,
+	digest_id  integer references digests(id),
+	track_id  integer references tracks(id)
 );
