@@ -1,0 +1,2 @@
+commitencoding = cp1251
+logoutputencoding = cp866
