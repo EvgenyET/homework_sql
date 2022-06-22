@@ -1,2 +1,13 @@
-commitencoding = cp1251
-logoutputencoding = cp866
+[core]
+        repositoryformatversion = 0
+        filemode = false
+        bare = false
+        logallrefupdates = true
+        symlinks = false
+        ignorecase = true
+        quotepath = false 
+        pager = cat|more.com
+
+[i18n]
+        commitencoding = cp1251
+        logoutputencoding = cp866
