@@ -15,4 +15,4 @@ SELECT nickname FROM musicians
     WHERE nickname NOT LIKE '% %';
     
 SELECT name_track FROM tracks
-    WHERE name_track LIKE '%РјРѕР№%' OR name_track LIKE '%my%';
+    WHERE name_track LIKE '%мой%' OR name_track LIKE '%my%';
